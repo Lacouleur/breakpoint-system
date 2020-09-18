@@ -1,0 +1,34 @@
+/* 
+lg : > 1200
+md : > 1024 & < 1200
+sm : > 600 et < 1024
+xs : < 600 
+*/
+
+// Small screen / mobile
+$BREAK-SM-MIN:           600px !default;
+
+// Medium screen / desktop
+$BREAK-MD-MIN:           1024px !default;
+
+// Large screen / wide desktop
+$BREAK-LG-MIN:           1200px !default;
+
+// Don't overlap between media queries
+$BREAK-XS-MAX:           ($BREAK-SM-MIN - 1) !default;
+$BREAK-SM-MAX:           ($BREAK-MD-MIN - 1) !default;
+$BREAK-MD-MAX:           ($BREAK-LG-MIN - 1) !default;
+
+// map for mixins
+$media-min-dimensions: (
+  sm: $BREAK-SM-MIN,
+  md: $BREAK-MD-MIN,
+  lg: $BREAK-LG-MIN,
+);
+
+$media-max-dimensions: (
+  xs: $BREAK-XS-MAX,
+  sm: $BREAK-SM-MAX,
+  md: $BREAK-MD-MAX,
+);
+

@@ -1,0 +1,91 @@
+@import './mixins-breakpoints.scss';
+
+.testBp {
+  height: 100vh;
+  font-size: 20px;
+  display: block;
+  background-color: green; // Le vert ne devrait pas apparaitre (écrasé par les autres breakpoint)
+ @include breakpoint(lg) {
+    background-color: blue;
+    font-size: 20px;
+  }
+
+  // moyen desktop
+  @include breakpoint(md) {
+    background-color: violet;
+  }
+
+  // tablette portrait
+  @include breakpoint(sm) {
+    background-color: red;
+  }
+
+  @include breakpoint(touch, portrait) {
+    background-color: lightcoral;
+  }
+
+  // tablette paysage
+  @include breakpoint(touch, landscape) {
+    background-color: orange;
+  }
+
+  // tablette portrait
+  @include breakpoint(sm) {
+    background-color: red;
+  }
+
+  //mobile
+  @include breakpoint(xs) {
+    background-color: yellow;
+  }
+
+  &-txt {
+    display: none;
+    // Grand desktop
+    @include breakpoint(lg) {
+      
+      &__LG {
+        display: block;
+      }
+    }
+
+    // moyen desktop
+    @include breakpoint(md) {
+      
+      &__MD {
+        display: block;
+      }
+    }
+    
+    // tablette portrail
+    @include breakpoint(sm) {
+      
+      &__SM {
+        display: block;
+      }
+    }
+    
+    // tablette paysage
+    @include breakpoint(touch, landscape) {
+      
+      &__touch-landscape {
+        display: block;
+      }
+    }
+
+    @include breakpoint(touch, portrait) {
+      
+      &__touch-portrait {
+        display: block;
+      }
+    }
+    
+    //mobile
+    @include breakpoint(xs) {
+      
+      &__XS {
+        display: block;
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+@import "./breakpoints";
+
+@mixin breakpoint($size: '', $orientation: '') {
+  $MEDIA-MIN: map-get($media-min-dimensions, $size);
+  $MEDIA-MAX: map-get($media-max-dimensions, $size);
+
+  @if $size == xs {
+    @media only screen and (hover: hover) and (max-width: $MEDIA-MAX) {
+      @content;
+    }
+  } @else if $size == lg {
+    @media only screen and (hover: hover) and (min-width: $MEDIA-MIN) {
+      @content;
+    }
+  } @else if $size == touch and $orientation != ''  {
+    @media only screen and (hover: none) and (orientation: $orientation) {
+      @content;
+    }
+  } @else if $size == touch and $orientation == '' {
+    @media only screen and (hover: none) {
+      @content;
+    }
+  } @else {
+    @media only screen and (hover: hover) and (min-width: $MEDIA-MIN) and (max-width: $MEDIA-MAX) {
+      @content;
+    }
+  }
+}
+
+@mixin breakpoint-max($size) {
+  @media only screen and (hover: hover) and (max-width: map-get($media-max-dimensions, $size)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-min($size) {
+  @media (min-width: map-get($media-min-dimensions, $size)) {
+    @content;
+  }
+}
